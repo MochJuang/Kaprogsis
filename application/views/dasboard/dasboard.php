@@ -3,7 +3,7 @@
       <div class="row">
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-aqua">
+          <div class="small-box bg-aqua" style="word-break:break-word">
             <div class="inner">
               <h3><?= $produk ?></h3>
 
@@ -18,7 +18,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-green">
+          <div class="small-box bg-green" style="word-break:break-word">
             <div class="inner">
               <h3>Rp <?= number_format($saldo_akhir,0,',','.') ?></sup></h3>
 
@@ -33,7 +33,7 @@
          <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-yellow">
+          <div class="small-box bg-yellow" style="word-break:break-word">
             <div class="inner">
               <h3><?= $user ?></h3>
 
@@ -48,7 +48,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-red">
+          <div class="small-box bg-red" style="word-break:break-word">
             <div class="inner">
               <h3><?= $invoice ?></h3>
 

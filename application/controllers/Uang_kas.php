@@ -48,6 +48,8 @@ class Uang_kas extends CI_Controller {
 		$masuk = $this->kas_model->get_saldo();
 		$masuk = intval($masuk['saldo']);
 		$saldo =  intval($this->input->post('nominal'));
+		$saldo_akhir = $masuk - $saldo;
+
 		// $waktu = strtotime($this->input->post('waktu'));
 		$waktu = date('Y-m-d H:s:i');
 		$data = [
@@ -57,7 +59,7 @@ class Uang_kas extends CI_Controller {
 			'nominal'	=> $this->input->post('nominal'),
 			'saldo'		=> $saldo_akhir
 		];
-		$this->db->insert('tb_kas', $data);
+		$this->db->insert('tb_kas', $data);	
 		redirect('uang_kas/index','refresh');
 	}
 	public function print()

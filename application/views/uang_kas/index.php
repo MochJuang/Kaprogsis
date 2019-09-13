@@ -33,7 +33,7 @@
                 <tbody>
                 	<?php $no = 1; foreach($kas as $kas): ?>
                 <tr>
-                	<td><?= $no;$no++; ?></td>
+                	<td><?= $kas['id_kas'] ?></td>
                 	<?php  
                 	$waktu = strtotime($kas['tanggal']);
                 	$waktu = date('d-m-Y',$waktu);
