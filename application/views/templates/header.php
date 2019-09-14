@@ -54,10 +54,10 @@
   <header class="main-header">
   	<input type="hidden" name="base_url" value="<?php echo base_url(); ?>">
     <!-- Logo -->
-    <a href="index2.html" class="logo bg-dark">
+    <a href="<?= base_url() ?>" class="logo" style="background: #000 !important">
     	<input type="hidden" name="user_active" value="<?= $this->session->userdata('user'); ?>">
       <!-- mini logo for sidebar mini 50x50 pixels -->
-      <span class="logo-lg"><b><img src="<?= base_url() ?>/assets/logo.png"></b>aprogsis</span>
+      <span class="logo-lg"><b><img style="size: 20px !important" class="img-fluid" src="<?= base_url() ?>/assets/logo.png"></b>aprogsis</span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">

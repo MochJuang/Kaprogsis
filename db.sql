@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Sep 12, 2019 at 11:02 PM
+-- Generation Time: Sep 13, 2019 at 02:14 PM
 -- Server version: 5.7.27-0ubuntu0.18.04.1
 -- PHP Version: 7.2.19-0ubuntu0.18.04.2
 
@@ -79,12 +79,23 @@ CREATE TABLE `tb_invoice` (
 --
 
 CREATE TABLE `tb_kas` (
+  `id_kas` int(4) NOT NULL,
   `tanggal` datetime DEFAULT NULL,
   `aksi` varchar(100) DEFAULT NULL,
   `deskripsi` text,
   `nominal` int(11) DEFAULT NULL,
   `saldo` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_kas`
+--
+
+INSERT INTO `tb_kas` (`id_kas`, `tanggal`, `aksi`, `deskripsi`, `nominal`, `saldo`) VALUES
+(1, '2019-09-13 07:47:13', 'Pemasukan', 'Loker', 50000, 50000),
+(2, '2019-09-13 07:14:14', 'Keluaran', 'Konsumsi', 5000, 45000),
+(3, '2019-09-13 07:43:14', 'Pemasukan', 'Pk Uyeh', 2000000, 2045000),
+(4, '2019-09-13 07:28:18', 'Keluaran', 'Ngopi', 500000, 1545000);
 
 -- --------------------------------------------------------
 
@@ -116,6 +127,14 @@ CREATE TABLE `tb_pesan` (
   `pesan` text NOT NULL,
   `foto` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_pesan`
+--
+
+INSERT INTO `tb_pesan` (`id_pesan`, `user`, `waktu`, `pesan`, `foto`) VALUES
+(0000000001, 'Moch Juang P', '2019-09-13 07:23:21', 'Dmn woy', 'juang.jpg'),
+(0000000002, 'Yusuf Firdaus', '2019-09-13 07:57:21', 'Di dieu yeuh', 'yusuf.jpg');
 
 -- --------------------------------------------------------
 
@@ -254,6 +273,12 @@ ALTER TABLE `tb_invoice`
   ADD KEY `dfads` (`user`);
 
 --
+-- Indexes for table `tb_kas`
+--
+ALTER TABLE `tb_kas`
+  ADD UNIQUE KEY `id_kas` (`id_kas`);
+
+--
 -- Indexes for table `tb_kegiatan`
 --
 ALTER TABLE `tb_kegiatan`
@@ -308,6 +333,11 @@ ALTER TABLE `tb_userdetail`
 --
 
 --
+-- AUTO_INCREMENT for table `tb_kas`
+--
+ALTER TABLE `tb_kas`
+  MODIFY `id_kas` int(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT for table `tb_kegiatan`
 --
 ALTER TABLE `tb_kegiatan`
@@ -316,7 +346,7 @@ ALTER TABLE `tb_kegiatan`
 -- AUTO_INCREMENT for table `tb_pesan`
 --
 ALTER TABLE `tb_pesan`
-  MODIFY `id_pesan` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pesan` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tb_riwayat`
 --

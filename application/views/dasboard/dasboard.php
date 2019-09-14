@@ -20,7 +20,7 @@
           <!-- small box -->
           <div class="small-box bg-green" style="word-break:break-word">
             <div class="inner">
-              <h3>Rp <?= number_format($saldo_akhir,0,',','.') ?></sup></h3>
+              <h4 style="font-size: 28px">Rp <?= number_format($saldo_akhir,0,',','.') ?></sup></h4>
 
               <p>Saldo Akhir</p>
             </div>
@@ -48,7 +48,7 @@
         <!-- ./col -->
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
-          <div class="small-box bg-red" style="word-break:break-word">
+          <div class="small-box bg-red" style="word-break:break-word;clear: both;">
             <div class="inner">
               <h3><?= $invoice ?></h3>
 
