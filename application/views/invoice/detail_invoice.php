@@ -27,6 +27,16 @@
 					<td><?= $invoice['penerima'] ?></td>
 				</tr>
 				<tr>
+					<td>Uang</td>
+					<td>:</td>
+					<td><?= number_format($invoice['uang'],0,',','.') ?></td>
+				</tr>
+				<tr>
+					<td>Kembalian</td>
+					<td>:</td>
+					<td><?= number_format($invoice['kembalian'],0,',','.') ?></td>
+				</tr>
+				<tr>
 					<td>Tempat</td>
 					<td>:</td>
 					<td><?= $invoice['tempat'] ?></td>

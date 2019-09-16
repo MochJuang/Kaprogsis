@@ -72,8 +72,9 @@ $(document).ready(function() {
 				subtotal = 0;
 			total += parseInt(subtotal);	
 		})
-
 		$('#total_harga').text(total);
+		var kembalian = $('#uang').val() - subtotal;
+		$('#kembalian').text(kembalian);
 
 	})
 	$(document).on('click', '#print', function(event) {
@@ -85,7 +86,13 @@ $(document).ready(function() {
 		}
 		else{
 			var kepada = $('#kepada').val();
-			var status = $('#status').val();
+			var uang = $('#uang').val();
+			var kembalian = $('#kembalian').text();
+			if (kembalian > 0) {
+				var status = 'Lunas';				
+			}else{
+				var status = 'Belum Lunas';
+			}
 			var jumlah = $('#total_harga').html();
 			var base_url = $('input[name="base_url"]').val();
 			$.ajax({
@@ -96,6 +103,8 @@ $(document).ready(function() {
 					'kepada' : kepada,
 					'jumlah_total'  : jumlah,
 					'status'  : status,
+					'uang'  : uang,
+					'kembalian'  : kembalian,
 				},
 				success: function(data){
 					$('#table tr').each(function(index, el) {

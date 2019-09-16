@@ -10,16 +10,13 @@
         <label for="inputName" class="col-sm-2 control-label">Kepada</label>
 
         <div class="col-sm-5">
-          <input type="text"  id="kepada" class="form-control" id="inputName" placeholder="Name">
+          <input type="text"  id="kepada" class="form-control" placeholder="Name">
         </div>
       </div>
       <div class="form-group">
         <label for="inputName" class="col-sm-2 control-label">Status</label>
           <div class="col-sm-5">
-						<select name="" id="status" class="form-control">
-							<option value="Lunas">Lunas</option>
-							<option value="Belum Lunas">Belum Lunas</option>
-						</select>
+	          <input type="text"  id="uang" class="form-control" placeholder="Uang">
           </div>
         </div>
         
@@ -73,6 +70,7 @@
         <div class="box">
         	<div class="box-body text-right">
 						<p>Total Harga : Rp. <span id="total_harga"></span></p>
+						<p>Total Kembalian : Rp. <span id="kembalian"></span></p>
         	</div>
         </div>
        <div class="btn btn-success" id="tambah">Tambah</div>

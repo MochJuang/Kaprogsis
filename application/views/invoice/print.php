@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>AdminLTE 2 | Invoice</title>
+  <title>Struk Pembayaran</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
   <!-- Bootstrap 3.3.7 -->
@@ -116,17 +116,25 @@
     </div>
     <!-- /.row -->
 
-      <div class="col-xs-3" style="float: right;margin-top: 	20px">
+      <div class="col-xs-4" style="float: left;margin-top: 	20px">
 
           <table class="table">
              <tr>
               <th>Total:</th>
               <td>Rp.  <?= number_format($invoice['jumlah_total'],0,',','.');  ?></td>
             </tr>
+             <tr>
+              <th>Uang:</th>
+              <td>Rp.  <?= number_format($invoice['uang'],0,',','.');  ?></td>
+            </tr>
+            <tr>
+              <th>Kembalian:</th>
+              <td>Rp.  <?= number_format($invoice['kembalian'],0,',','.');  ?></td>
+            </tr>
            </table>
       </div>
       <!-- /.col -->
-    <div class="float-right" style="margin: 200px 0 0 0;float: right;">
+    <div class="float-right" style="margin: 200px 100px 0 0;float: right;">
     		 Kaprogsis
     </div>
   </section>

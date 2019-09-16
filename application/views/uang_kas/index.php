@@ -31,7 +31,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                	<?php $no = 1; foreach($kas as $kas): ?>
+                	<?php foreach($kas as $kas): ?>
                 <tr>
                 	<td><?= $kas['id_kas'] ?></td>
                 	<?php  

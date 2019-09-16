@@ -49,23 +49,28 @@ class Invoice extends CI_Controller {
 			'tempat'		=> 'Di Tempat',
 			'jumlah_total' 	=> $jumlah_total,
 			'tanggal' 		=> date('Y-m-d H:s:i'),
+			'uang'			=> $this->input->post('uang'),
+			'kembalian'		=> $this->input->post('kembalian'),
 			'status'		=> $this->input->post('status')
 
 		];
+		// echo json_encode($data);die;
 		$this->db->insert('tb_invoice', $data);
 
 		$masuk = $this->kas_model->get_saldo();
 		$masuk = intval($masuk['saldo']);
 		$jumlah_total =  intval($jumlah_total);
 		$jumlah_total_akhir = $masuk + $jumlah_total;
-		$data_kas = [
-			'tanggal'  => date('Y-m-d H:s:i'), 
-			'aksi'		=> 'Pemasukan',
-			'deskripsi'  => 'Unit Produksi',
-			'nominal'	=> $jumlah_total,
-			'saldo'		=> $jumlah_total_akhir
-		];
-		$this->db->insert('tb_kas', $data_kas);
+		if ($this->input->post('status') == 'Lunas') {
+			$data_kas = [
+				'tanggal'  => date('Y-m-d H:s:i'), 
+				'aksi'		=> 'Pemasukan',
+				'deskripsi'  => 'Unit Produksi',
+				'nominal'	=> $jumlah_total,
+				'saldo'		=> $jumlah_total_akhir
+			];
+			$this->db->insert('tb_kas', $data_kas);
+		}
 		echo json_encode($id);
 
 	}
