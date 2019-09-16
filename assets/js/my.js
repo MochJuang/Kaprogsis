@@ -73,7 +73,7 @@ $(document).ready(function() {
 			total += parseInt(subtotal);	
 		})
 		$('#total_harga').text(total);
-		var kembalian = $('#uang').val() - subtotal;
+		var kembalian = $('#uang').val() - total;
 		$('#kembalian').text(kembalian);
 
 	})

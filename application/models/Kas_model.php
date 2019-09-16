@@ -6,7 +6,7 @@ class Kas_model extends CI_Model {
 	public function get_saldo()
 		{
 			$this->db->select('saldo');
-			$awal =  $this->db->order_by('id_kas','desc')->get('tb_kas')->result_array();
+			$awal =  $this->db->get('tb_kas')->result_array();
 			return $awal = end($awal);
 		}	
 	public function saldo_akhir()

@@ -13,7 +13,8 @@ class Invoice extends CI_Controller {
 
 	public function index()
 	{
-		$data['invoice'] = $this->db->get('tb_invoice')->result_array();
+		$data['invoice'] = $this->db->where('status','Lunas')->get('tb_invoice')->result_array();
+		$data['belum'] = $this->db->where('status','Belum Lunas')->get('tb_invoice')->result_array();
 		$data['title'] = $this->title;
 		$this->load->view('templates/header',$data);	
 		$this->load->view('invoice/index',$data);	
@@ -112,5 +113,45 @@ class Invoice extends CI_Controller {
 		$this->load->view('templates/header',$data);	
 		$this->load->view('invoice/detail_invoice', $data);
 		$this->load->view('templates/footer');	
+	}
+	public function bayar_ulang($value='')
+	{
+		$data = $this->db->get_where('tb_invoice', ['id_invoice' => $this->input->post('id_in')])->row_array();
+		$kembalian = intval($this->input->post('kembali'));
+		$uang = intval($this->input->post('bayar')) + intval($data['uang']);
+		if ($kembalian > 0) {
+			$status = "Lunas";
+		}else{
+			$status = 'Belum Lunas';
+		}	
+		$this->db->where('id_invoice', $this->input->post('id_in'));
+		$this->db->update('tb_invoice', [
+			'uang'		=> $uang,
+			'kembalian' => $kembalian,
+			'status' 	=> $status
+		]);
+		if ($kembalian > 0) {
+				$masuk = $this->kas_model->get_saldo();
+				$masuk = intval($masuk['saldo']);
+				$jumlah_total =  intval($data['jumlah_total']);
+				$jumlah_total_akhir = $masuk + $jumlah_total;
+
+				$data_kas = [
+				'tanggal'  => date('Y-m-d H:s:i'), 
+				'aksi'		=> 'Pemasukan',
+				'deskripsi'  => 'Unit Produksi',
+				'nominal'	=> intval($data['jumlah_total']),
+				'saldo'		=> $jumlah_total_akhir
+			];
+			$this->db->insert('tb_kas', $data_kas);
+
+		}else{
+			redirect('invoice','refresh');
+		}
+			redirect('invoice','refresh');
+	}
+	public function get_data($id)
+	{
+		echo json_encode($this->db->get_where('tb_invoice', ['id_invoice' => $id])->row_array());
 	}
 }

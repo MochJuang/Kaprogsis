@@ -11,7 +11,7 @@
             <!-- /.box-header -->
             <div class="box-body table-responsive no-padding">
              <div class="box-body no-padding">
-              <table id="tb_riwayat" class="table table-responsive table-hover">
+              <table id="tb_kas" class="table table-responsive table-hover">
                 <thead>
                 	<tr>
                   <th>Tanggal</th>
