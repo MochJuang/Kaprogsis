@@ -5,7 +5,10 @@
   </ol>
 	<div class="row mb-3">
 		<div class="offset-3 col-4">
-			<a href="<?= base_url() ?>/invoice/tambah_invoice" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Invoice</i></a>
+		<?php if($this->session->userdata('akses') == 'admin' OR $this->session->userdata('akses') == 'superadmin'): ?>
+			<a href="<?= base_url() ?>/invoice/tambah_invoice" class="btn btn-primary"><i class="fa fa-plus"></i> Tambah Invoice</i>
+			</a>
+		<?php endif ?>
 		</div>
 	</div>
 	<br>

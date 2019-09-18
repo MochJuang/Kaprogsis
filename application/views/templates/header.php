@@ -158,7 +158,9 @@
           
         </li>
             <li><a href="<?= base_url() ?>loker/riwayat"><i class="fa fa-circle-o"></i>Riwayat Pengambilan</a></li>
-            <li><a href="<?= base_url() ?>loker/transaksi"><i class="fa fa-circle-o"></i>Transaksi</a></li>
+        		<?php if($this->session->userdata('akses') == 'admin' OR $this->session->userdata('akses') == 'superadmin'): ?>
+	            <li><a href="<?= base_url() ?>loker/transaksi"><i class="fa fa-circle-o"></i>Transaksi</a></li>
+            <?php endif ?>
           </ul>
         </li>
         </li>        

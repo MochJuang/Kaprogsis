@@ -46,7 +46,49 @@ class Kas_model extends CI_Model {
 
 	}
 
+	public function jum_tgl_pemasukan($date_1,$date_2)
+	{
+		$query = "SELECT * FROM tb_kas WHERE aksi = 'Pemasukan' AND (tanggal between '$date_1' AND '$date_2' ) ORDER BY tanggal DESC";
+		$data = $this->db->query($query)->result();
+		$jumlah['pemasukan'] = 0;
+		foreach ($data as $data) {
+			$jumlah['pemasukan'] = $jumlah['pemasukan'] + $data->nominal;
+		}
+		return $jumlah['pemasukan'];
+	}
+	public function jum_tgl_keluaran($date_1,$date_2)
+	{
+		$query = "SELECT * FROM tb_kas WHERE aksi = 'Keluaran' AND (tanggal between '$date_1' AND '$date_2' ) ORDER BY tanggal DESC";
+		$data = $this->db->query($query)->result();
+		$jumlah['keluaran'] = 0;
+		foreach ($data as $data) {
+			$jumlah['keluaran'] = $jumlah['keluaran'] + $data->nominal;
+		}
+		return $jumlah['keluaran'];
+	}
+	public function jum_tgl_total($date_1,$date_2)
+	{
+		$query = "SELECT * FROM tb_kas WHERE (tanggal between '$date_1' AND '$date_2' ) ORDER BY tanggal DESC";
+		$data = $this->db->query($query)->result();
+		$jumlah['jumlah_total'] = 0;
+		foreach ($data as $data) {
+			$jumlah['jumlah_total'] = $jumlah['jumlah_total'] + $data->nominal;
+		}
+		return $jumlah['jumlah_total'];
+	}
+	public function data_jumlah($date_1,$date_2)
+	{
+		$query = "SELECT * FROM tb_kas WHERE (tanggal between '$date_1' AND '$date_2' ) ORDER BY tanggal DESC";
+		$data['kas'] = $this->db->query($query)->result_array();
+		$data['pemasukan'] = $this->jum_tgl_pemasukan($date_1,$date_2);
+		$data['keluaran'] = $this->jum_tgl_keluaran($date_1,$date_2);
+		$data['total'] = $this->jum_tgl_total($date_1,$date_2);
+		return $data;
+	}
+
 }
+
+ 
 
 /* End of file Kas_model.php */
 /* Location: ./application/models/Kas_model.php */

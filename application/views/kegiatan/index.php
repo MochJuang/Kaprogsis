@@ -3,9 +3,11 @@
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
         <li class="active">Kegiatan</li>
   </ol>
+	<?php if($this->session->userdata('akses') == 'admin' OR $this->session->userdata('akses') == 'superadmin'): ?>
   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Tambah">
-            <i class="fa fa-plus"></i> Tambah Kegiatan
-        </button>
+      <i class="fa fa-plus"></i> Tambah Kegiatan
+  </button>
+  <?php endif ?>
          <div class="modal fade" id="Tambah">
           <div class="modal-dialog">
             	<form action="<?= base_url() ?>kegiatan/tambah" method="post">

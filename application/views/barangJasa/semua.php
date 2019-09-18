@@ -81,16 +81,16 @@
     				<td>Rp. <?= number_format($data['harga'],0,',','.') ?></td>
     				<td><?= $data['terjual'] ?></td>
     				<td>
-              <?php //if ($this->session->userdata('akses') == 'admin'): ?>
+						<?php if($this->session->userdata('akses') == 'admin' OR $this->session->userdata('akses') == 'superadmin'): ?>
     					<div class="btn-group">
-
-                  	<a href="<?= base_url() ?>/barang_jasa/detail/<?= $data['kode_barang'] ?>" class="btn btn-primary"><span class="fa fa-sticky-note"></span></a>
-                  	<a href="<?= base_url() ?>/barang_jasa/delete/<?= $data['kode_barang'] ?>" class="btn btn-danger"><span class="fa fa-warning"></span></a>
-                  	<a data-toggle="modal" data-id="<?= $data['kode_barang'] ?>" id="edit_barang" data-target="#edit" class="btn btn-warning"><span class="fa fa-edit"></span></a>
-
-
+              	<a href="<?= base_url() ?>/barang_jasa/detail/<?= $data['kode_barang'] ?>" class="btn btn-primary"><span class="fa fa-sticky-note"></span></a>
+              	<a href="<?= base_url() ?>/barang_jasa/delete/<?= $data['kode_barang'] ?>" class="btn btn-danger"><span class="fa fa-warning"></span></a>
+              	<a data-toggle="modal" data-id="<?= $data['kode_barang'] ?>" id="edit_barang" data-target="#edit" class="btn btn-warning"><span class="fa fa-edit"></span></a>
     					</div>
-						<?php //endif ?>
+    					<?php else: ?>
+          	<a href="<?= base_url() ?>/barang_jasa/detail/<?= $data['kode_barang'] ?>" class="btn btn-primary"><span class="fa fa-sticky-note"></span></a>
+
+						<?php endif ?>
     				</td>
     			</tr>
     			<?php endforeach ?>

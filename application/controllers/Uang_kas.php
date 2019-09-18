@@ -68,6 +68,11 @@ class Uang_kas extends CI_Controller {
 		$this->load->view('uang_kas/print',$data);
 
 	}
+	public function print_custom()
+	{
+		$data = $this->kas_model->data_jumlah($this->input->post('date_1'),$this->input->post('date_2'));		
+		$this->load->view('uang_kas/print',$data);
+	}
 
 }
 

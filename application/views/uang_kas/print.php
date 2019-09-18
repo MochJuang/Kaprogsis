@@ -1,3 +1,4 @@
+ 
  <link rel="stylesheet" href="<?= base_url() ?>assets/bower_components/bootstrap/dist/css/bootstrap.min.css">
 <div class="container">
 	<h1>Laporan Uang Kas Kaprogsis</h1>
@@ -30,7 +31,37 @@
 	      <?php endforeach; ?>
         </tbody>	
     </table>
+    <div class="row">
+    	<div class="col-md-4">
+    		<table class="table">
+    			<tr>
+    				<td>Jumlah Pemasukan</td>
+    				<td>:</td>
+    				<td><?= number_format($pemasukan,0,',','.') ?></td>
+    			</tr>
+    			<tr>
+    				<td>Jumlah Pengeluaran</td>
+    				<td>:</td>
+    				<td><?= number_format($keluaran,0,',','.') ?></td>
+    			</tr>
+    			<tr>
+    				<td>Jumlah Total</td>
+    				<td>:</td>
+    				<td><?= number_format($total,0,',','.') ?></td>
+    			</tr>
+    		</table>
+    	</div>
+    </div>
+    <div class="row">
+    	<div class="col"><button id="btn" class="btn btn-success">Print</i></button></div>
+    </div>
 </div>
 <script>
-	window.print();
+	window.addEventListener('load', function (e) {
+		var data = document.getElementById('btn');
+		data.addEventListener('click', function (ev) {
+			ev.target.remove();
+			window.print();
+		});
+	});
 </script>

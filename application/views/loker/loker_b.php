@@ -22,9 +22,11 @@
    </div>
 	<a href="<?= base_url() ?>/loker/loker_c" class="btn btn-primary">Putri</a>
    
+	<?php if($this->session->userdata('akses') == 'admin' OR $this->session->userdata('akses') == 'superadmin'): ?>
 	<button type="button" class="btn btn-success" data-toggle="modal" data-target="#Tambah">
-            <i class="fa fa-plus"></i> Tambah
-        </button>
+      <i class="fa fa-plus"></i> Tambah
+  </button>
+	<?php endif ?>
          <div class="modal fade" id="Tambah">
           <div class="modal-dialog">
             	<form action="<?= base_url() ?>loker/tambah/B" method="post">
@@ -108,9 +110,15 @@
                   <td><?= $loker['nama'] ?></td>
                   <td><?= $loker['kelas'] ?></td>
                   <td>
-                  	<a href="<?= base_url() ?>/loker/detail/<?= $loker['id_loker'] ?>" class="btn btn-primary"><span class="fa fa-sticky-note"></span></a>
-                  	<a href="<?= base_url() ?>/loker/delete/<?= $loker['id_loker'] ?>/b" class="btn btn-danger"><span class="fa fa-warning"></span></a>
-										<a id="edit_loker" data-target="#update_loker" data-toggle="modal" data-id="<?= $loker['id_loker'] ?>" class="btn btn-warning"><span class="fa fa-edit"></span></a>                  
+                		<?php if($this->session->userdata('akses') == 'admin' OR $this->session->userdata('akses') == 'superadmin'): ?>
+                		<div class="btn-group">
+	                  	<a href="<?= base_url() ?>/loker/detail/<?= $loker['id_loker'] ?>" class="btn btn-primary"><span class="fa fa-sticky-note"></span></a>
+	                  	<a href="<?= base_url() ?>/loker/delete/<?= $loker['id_loker'] ?>/a" class="btn btn-danger"><span class="fa fa-warning"></span></a>
+	                  	<a id="edit_loker" data-target="#update_loker" data-toggle="modal" data-id="<?= $loker['id_loker'] ?>" class="btn btn-warning"><span class="fa fa-edit"></span></a>
+                  	</div>
+                  	<?php else: ?>
+	                  	<a href="<?= base_url() ?>/loker/detail/<?= $loker['id_loker'] ?>" class="btn btn-primary"><span class="fa fa-sticky-note"></span></a>
+                  <?php endif ?>
 										</td>
                 </tr>
               <?php endforeach ?>

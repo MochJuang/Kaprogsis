@@ -53,7 +53,7 @@
           <!-- /.modal-dialog -->
         </div>
 
-
+		<?php if($this->session->userdata('akses') == 'admin' OR $this->session->userdata('akses') == 'superadmin'): ?>
 		<div class="row fixed-bottom">
         <div class="col-md-4" style="position: fixed;bottom: 0;">
           <!-- DIRECT CHAT PRIMARY -->
@@ -94,7 +94,8 @@
         </div>
         <!-- /.col -->
       </div>
-	</div>
+		</div>
+    <?php endif ?>
   </aside>
  <div class="control-sidebar-bg"></div>
 </div>

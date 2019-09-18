@@ -6,14 +6,30 @@
   	  <div class="row">
         <div class="col-xs-12">
         	<h3>Jumlah Saldo Akhir  <div class="btn btn-success">Rp.<?= number_format($saldo_akhir,0,',','.') ?></div></h3>
+					<?php if($this->session->userdata('akses') == 'admin' OR $this->session->userdata('akses') == 'superadmin'): ?>
         	 <button type="button" class="btn btn-success" data-toggle="modal" data-target="#Pemasukan">
             Pemasukan
         </button>
         <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#Keluaran">
             Keluaran
         </button>
+      <?php endif ?>
+        <div class="btn-group">
+					<div class="btn btn-flat btn-primary"><div class="fa fa-print"></div> Print</div>
+					<button type="button" class="btn btn-flat btn-primary dropdown-toggle" data-toggle="dropdown">
+						<span class="caret"></span>
+						<span class="sr-only"></span>
+					</button>   	
+					<ul class="dropdown-menu" role="menu">
+						<li>
+							<a href="<?= base_url() ?>uang_kas/print" class="dropdown-item">All</a>						
+						</li>
+						<li>
+							<a data-toggle="modal" data-target="#custom" class="dropdown-item">Custom</a>	
+						</li>
+					</ul>
+		 		</div>
         
-        <a href="<?= base_url() ?>uang_kas/print" class="btn btn-primary"><i class="fa fa-print"></i></a>
           <div class="box" style="margin-top: 10px !important">
             <div class="box-header"></div>
             <!-- /.box-header -->
@@ -71,6 +87,37 @@
               	</div>
               </div>
               <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+            </form>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+        </div>
+        <!-- /.modal -->
+        <div class="modal fade" id="custom">
+          <div class="modal-dialog">
+          	<form action="<?= base_url() ?>uang_kas/print_custom" method="post">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Print Laporan Uang Kas</h4>
+              </div>
+              <div class="modal-body">
+              	<div class="row">
+              		<div class="col-md-5">
+		                <input type="date" name="date_1" class="form-control">               		
+              		</div>
+              		<div class="col-md-2">Sampai</div>
+              		<div class="col-md-5">
+		                <input type="date" name="date_2" class="form-control">               		
+              		</div>
+              	</div>
+              </div>
+              <div class="modal-footer" style="margin-top: 15px">
                 <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
                 <button type="submit" class="btn btn-primary">Save changes</button>
               </div>
